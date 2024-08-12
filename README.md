@@ -2,6 +2,10 @@
 
 <img src="PID.png" alt="PID" style="zoom:50%;" />
 
+## Paper
+
+The paper is under review: https://arxiv.org/abs/2407.09299
+
 ## Environment
 
 We recommend you to install the environment with environment.yaml. 
@@ -60,3 +64,16 @@ bash shell/run_train_kaist512_vqf8.sh
 ## Acknowledgements
 
 Our code is built upon [LDM](https://github.com/CompVis/latent-diffusion) and [HADAR](https://github.com/FanglinBao/HADAR). We thank the authors for their excellent work.
+
+## Citation
+
+If you find this work helpful in your research, please consider citing our paper:
+
+```
+@inproceedings{Mao2024PIDPD,
+  title={PID: Physics-Informed Diffusion Model for Infrared Image Generation},
+  author={Fangyuan Mao and Jilin Mei and Shunong Lu and Fuyang Liu and Liang Chen and Fangzhou Zhao and Yu Hu},
+  year={2024},
+  url={https://api.semanticscholar.org/CorpusID:271161686}
+}
+```

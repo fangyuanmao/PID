@@ -1,31 +1,61 @@
-import h5py
-import numpy as np
+import os
+from PIL import Image
 from torch.utils.data import Dataset
-
+from torchvision import transforms
 
 class TrainDataset(Dataset):
-    def __init__(self, h5_file):
+    def __init__(self, img_dir, transform=None):
         super(TrainDataset, self).__init__()
-        self.h5_file = h5_file
+        self.img_dir = img_dir
+        self.transform = transform
+
+        # List all image files in the directories
+        self.images = sorted([os.path.join(img_dir, fname) for fname in os.listdir(img_dir) if fname.endswith(('jpg', 'png'))])
 
     def __getitem__(self, idx):
-        with h5py.File(self.h5_file, 'r') as f:
-            return f['lr'][idx] / 255., f['hr'][idx] / 255.
+        image_path = self.images[idx]
+
+        # Load images
+        image = Image.open(image_path).convert('RGB')
+
+        # Apply transforms if any
+        if self.transform:
+            image = self.transform(image)
+        else:
+            # Default transform to tensor and normalization
+            to_tensor = transforms.ToTensor()
+            image = to_tensor(image)
+
+        return image
 
     def __len__(self):
-        with h5py.File(self.h5_file, 'r') as f:
-            return len(f['lr'])
+        return len(self.images)
 
 
 class EvalDataset(Dataset):
-    def __init__(self, h5_file):
+    def __init__(self, img_dir, transform=None):
         super(EvalDataset, self).__init__()
-        self.h5_file = h5_file
+        self.img_dir = img_dir
+        self.transform = transform
+
+        # List all image files in the directories
+        self.images = sorted([os.path.join(img_dir, fname) for fname in os.listdir(img_dir) if fname.endswith(('jpg', 'png'))])
 
     def __getitem__(self, idx):
-        with h5py.File(self.h5_file, 'r') as f:
-            return f['lr'][str(idx)][:, :] / 255., f['hr'][str(idx)][:, :] / 255.
-        
+        image_path = self.images[idx]
+
+        # Load images
+        image = Image.open(image_path).convert('RGB')
+
+        # Apply transforms if any
+        if self.transform:
+            image = self.transform(image)
+        else:
+            # Default transform to tensor and normalization
+            to_tensor = transforms.ToTensor()
+            image = to_tensor(image)
+
+        return image
+
     def __len__(self):
-        with h5py.File(self.h5_file, 'r') as f:
-            return len(f['lr'])
+        return len(self.images)

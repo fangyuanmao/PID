@@ -1,11 +1,9 @@
+import torch
 from torch import nn
 import torch.nn.functional as F
-import torch
-from utils import HARDAloss
 import segmentation_models_pytorch as smp
-import math
 
-class HADARNet(nn.Module):
+class TeVNet(nn.Module):
     def __init__(self, in_channels=3, out_channels=6, args=None):
         super().__init__()
         self.in_channels  = in_channels

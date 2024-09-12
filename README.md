@@ -49,8 +49,7 @@ Prepare corresponding RGB and infrared images with same names in two directories
 
 ```bash
 cd TeVNet
-python prepare.py
-bash shell/run.sh
+bash shell/train.sh
 ```
 
 ### Stage 2: Train PID

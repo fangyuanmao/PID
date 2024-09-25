@@ -71,7 +71,7 @@ If you find this work helpful in your research, please consider citing our paper
 ```
 @inproceedings{Mao2024PIDPD,
   title={PID: Physics-Informed Diffusion Model for Infrared Image Generation},
-  author={Fangyuan Mao and Jilin Mei and Shunong Lu and Fuyang Liu and Liang Chen and Fangzhou Zhao and Yu Hu},
+  author={Fangyuan Mao and Jilin Mei and Shun Lu and Fuyang Liu and Liang Chen and Fangzhou Zhao and Yu Hu},
   year={2024},
   url={https://doi.org/10.48550/arXiv.2407.09299}
 }

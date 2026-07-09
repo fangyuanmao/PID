@@ -69,7 +69,7 @@ model:
         out_channels: 6
         smp_model: Unet
         smp_encoder: resnet18
-        ckpt_path: "./pretrained/TeVNet_KAIST/epoch_950.pth"
+        ckpt_path: "./pretrained/TeVNet_FLIR/epoch_1000.pth"
 
 data:
   target: main.DataModuleFromConfig
